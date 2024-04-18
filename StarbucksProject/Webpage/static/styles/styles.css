@@ -1,0 +1,67 @@
+/* Example CSS styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7; /* Adding a light background color */
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0; /* Increased padding for better spacing */
+    text-align: center;
+}
+
+nav {
+    background-color: #444444;
+    padding: 10px 0; /* Adjusted padding */
+    text-align: center; /* Center-aligning the navigation links */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px; /* Increased margin for better spacing */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px; /* Increased font size */
+}
+
+nav ul li a:hover {
+    color: #ffcc00; /* Changing color on hover */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed; /* Fixed positioning to keep it at the bottom */
+    width: 100%;
+    bottom: 0;
+}
+/* Style for the navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}

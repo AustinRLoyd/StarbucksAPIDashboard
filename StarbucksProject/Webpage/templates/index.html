@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask Webpage</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+    <header>
+        <h1>My Flask Webpage</h1>
+    </header>
+    <section>
+        <h2>Project Overview</h2>
+        <p>This is a Flask Web App to provide a basic analytical dashboard as well as other functionality to a database. In the navigation bar you can click on the About button to
+            see an overview of all the technologies used within this project. The Dashboard button will display analytical graphs from the Starbucks database I created.
+        </p>
+    </section>
+    <footer>
+        <p>&copy; 2024 My Flask Webpage</p>
+    </footer>
+</body>
+</html>

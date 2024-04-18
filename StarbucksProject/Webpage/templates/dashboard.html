@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .dashboard-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .dashboard-item h2 {
+            margin-top: 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/dashboard">Dashboard</a>
+</div>
+
+<div class="container">
+
+    <div class="dashboard-item">
+        <h2>Store Revenue</h2>
+    
+        <canvas id="revenueChart" width="400" height="70"></canvas>
+
+        <script>
+            var ctx = document.getElementById('revenueChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {{ rev_labels|tojson }},
+                    datasets: [{
+                        label: 'Revenue',
+                        data: {{ rev_values|tojson }},
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)', // Color for label 1
+                            'rgba(54, 162, 235, 0.2)', // Color for label 2
+                            'rgba(255, 206, 86, 0.2)', // Color for label 3
+                            'rgba(75, 192, 192, 0.2)', // Color for label 4
+                            'rgba(153, 102, 255, 0.2)' // Color for label 5
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)', // Border color for label 1
+                            'rgba(54, 162, 235, 1)', // Border color for label 2
+                            'rgba(255, 206, 86, 1)', // Border color for label 3
+                            'rgba(75, 192, 192, 1)', // Border color for label 4
+                            'rgba(153, 102, 255, 1)' // Border color for label 5
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+        
+    </div>
+
+        
+    <div class="dashboard-item">
+        <h2>Most recent transactions</h2>
+        <ul>
+            {% for row in data %}
+            <li>
+                <strong>Date:</strong> {{ row.Date }},
+                <strong>Time:</strong> {{ row.Time }},
+                <strong>Hour:</strong> {{ row.Hour }},
+                <strong>Location:</strong> {{ row.Location }},
+                <strong>Name:</strong> {{ row.Name }},
+                <strong>Drink Name:</strong> {{ row['Drink Name'] }},
+                <strong>Price:</strong> {{ row.Price }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
